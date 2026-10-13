@@ -1,1 +1,7 @@
 node_modules
+
+# Local secrets and generated files
+.env*
+!.env.example
+.next/
+*.tsbuildinfo
