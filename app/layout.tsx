@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,7 +24,49 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-screen flex">
+  <header className="w-64 shrink-0 border-r bg-white">
+    <nav className="flex flex-col items-center gap-6 px-6 py-4">
+      <Link href="/" className="font-bold">
+        Co-Coach
+      </Link>
+
+      <Link href="/meilensteine" className="text-gray-600 hover:text-black">
+        Meilensteine
+      </Link>
+
+      <Link href="/projectboard" className="text-gray-600 hover:text-black">
+        Projectboard
+      </Link>
+
+      <Link href="/wissensdatenbank" className="text-gray-600 hover:text-black">
+        Wissensdatenbank
+      </Link>
+    </nav>
+  </header>
+
+  <div className="flex min-w-0 flex-1 flex-col">
+    <header className="border-b bg-white">
+      <nav className="flex items-center gap-6 px-6 py-4">
+        <Link href="/meilensteine" className="text-gray-600 hover:text-black">
+          Meilensteine
+        </Link>
+
+        <Link href="/projectboard" className="text-gray-600 hover:text-black">
+          Projectboard
+        </Link>
+
+        <Link href="/wissensdatenbank" className="text-gray-600 hover:text-black">
+          Wissensdatenbank
+        </Link>
+      </nav>
+    </header>
+
+    <main className="flex-1">{children}</main>
+  </div>
+</body>
+
+      
     </html>
   );
 }
